@@ -32,6 +32,6 @@ COMMIT TRANSACTION;
 
 SET IDENTITY_INSERT board ON;
 INSERT INTO board (id, title, author_first, author_last, description) VALUES (1, 'Hamlet', 'William', 'Shakespeare','A boy is told by the ghost of his father to kill his uncle.');
-INSERT INTO board (id, title, author_first, author_last, description) VALUES (1, 'Romeo and Juliet', 'William', 'Shakespeare','A love story, but like REALLY sad.');
-INSERT INTO board (id, title, author_first, author_last, description) VALUES (1, 'King Lear', 'William', 'Shakespeare', 'Something about socialism.');
+INSERT INTO board (id, title, author_first, author_last, description) VALUES (2, 'Romeo and Juliet', 'William', 'Shakespeare','A love story, but like REALLY sad.');
+INSERT INTO board (id, title, author_first, author_last, description) VALUES (3, 'King Lear', 'William', 'Shakespeare', 'Something about socialism.');
 SET IDENTITY_INSERT board OFF;
