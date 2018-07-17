@@ -7,10 +7,14 @@
     <div class="edit-wrapper">
         <header class="edit-header edit-title card">@Model.Title</header>
         <div class="edit-content card">
-            <form asp-controller="Home" asp-action="EditBoard" method="post">
+            <form asp-controller="Home" asp-action="EditBoard" asp-route-id="@Model.Id" method="post">
                 <label class="edit-content-description">Description</label>
                 <br />
                 <textarea asp-for="Description" ></textarea>
+                <input type="submit" value="Save" />
+            </form>
+            <form asp-controller="Home" asp-action="Index" method="get">
+                <input type="submit" value="Cancel" />
             </form>
 
         </div>

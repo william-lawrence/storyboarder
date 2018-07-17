@@ -10,5 +10,6 @@ namespace Storyboarder.Web.DAL
     {
         IList<Board> GetAllBoards();
         Board GetBoard(int boardId);
+        void UpdateBoard(Board board);
     }
 }

@@ -102,6 +102,30 @@ namespace Storyboarder.Web.DAL
             return board;
         }
 
+        public void UpdateBoard(Board board)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    // SQL to change the description in the database
+                    string sql = "UPDATE board SET description = @boardDescription WHERE id = @boardId;";
+
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@boardDescription", board.Description);
+                    command.Parameters.AddWithValue("@boardId", board.Id);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Maps the rows of the board table to a Board object.
         /// </summary>
