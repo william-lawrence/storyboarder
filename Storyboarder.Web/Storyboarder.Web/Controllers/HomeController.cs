@@ -19,11 +19,27 @@ namespace Storyboarder.Web.Controllers
             this.dal = dal;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             var boards = dal.GetAllBoards();
 
             return View(boards);
+        }
+
+        [HttpGet]
+        public IActionResult EditBoard(int id)
+        {
+            var board = dal.GetBoard(id);
+
+            return View(board);
+        }
+
+        [HttpPost]
+        public IActionResult EditBoard(Board board)
+        {
+
+            return RedirectToAction("Home", "Index");
         }
 
         public IActionResult About()

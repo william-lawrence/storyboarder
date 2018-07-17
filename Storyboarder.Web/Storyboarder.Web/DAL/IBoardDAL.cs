@@ -9,5 +9,6 @@ namespace Storyboarder.Web.DAL
     public interface IBoardDAL
     {
         IList<Board> GetAllBoards();
+        Board GetBoard(int boardId);
     }
 }

@@ -1,0 +1,18 @@
+﻿@model Board
+@{
+    ViewData["Title"] = "EditBoard";
+}
+
+<body>
+    <div class="edit-wrapper">
+        <header class="edit-header edit-title card">@Model.Title</header>
+        <div class="edit-content card">
+            <form asp-controller="Home" asp-action="EditBoard" method="post">
+                <label class="edit-content-description">Description</label>
+                <br />
+                <textarea asp-for="Description" ></textarea>
+            </form>
+
+        </div>
+    </div>
+</body>

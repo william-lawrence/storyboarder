@@ -11,10 +11,32 @@
 
             @foreach (var board in Model)
             {
-                <div class="index-content card">
-                    <h3 class="index-content-title">@board.Title</h3>
-                    <p class="index-content-description">@board.Description</p>
-                </div>
+            <div class="index-content card">
+                <h3 class="index-content-title">@board.Title</h3>
+                <p class="index-content-description">@board.Description</p>
+
+                <form>
+                    <span>
+                        <input type="hidden" asp-for="@board.Id" />
+                        <input type="submit" value="View" />
+                    </span>
+                </form>
+
+                <form asp-controller="Home" asp-action="EditBoard" method="get">
+                    <span>
+                        <input type="hidden" asp-for="@board.Id" asp-route-id="@board.Id"/>
+                        <input type="submit" value="Edit" />
+                    </span>
+                </form>
+
+                <form>
+                    <span>
+                        <input type="hidden" asp-for="@board.Id" />
+                        <input type="submit" value="Delete" />
+                    </span>
+                </form>
+
+            </div>
             }
 
         </div>

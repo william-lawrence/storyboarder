@@ -3,6 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    margin-top: 10px;
 }
 
 /* Wrapping element */
@@ -10,34 +11,6 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
-
-.index-wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: "index-header" "index-content-wrapper" "index-footer";
-    grid-row-gap: 15px;
-}
-
-.index-header {
-    grid-area: index-header;
-}
-
-.index-title {
-    font: Helvetica;
-    font-weight: bold;
-}
-
-.index-content-title {
-    font: Helvetica;
-}
-
-.index-content-description {
-    font: Garamond;
-}
-
-.index-content {
-    grid-area: index-content
 }
 
 .card {
@@ -88,10 +61,79 @@ body {
     box-shadow: 3px 3px 0px #bababa;
 }
 
+textarea {
+    height: 10em;
+    width: 100%;
+}
+
+/*Styling for the index page.*/
+
+.index-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "index-header"
+        "index-content-wrapper"
+        "index-footer";
+    grid-row-gap: 15px;
+}
+
+.index-header {
+    grid-area: index-header;
+}
+
+.index-title {
+    font: Helvetica;
+    font-weight: bold;
+    font-size: 5em;
+}
+
+.index-content-title {
+    font: Helvetica;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+.index-content-description {
+    font: garamond;
+    font-size: 1.2em;
+}
+
+.index-content {
+    grid-area: index-content
+}
+
 .index-footer {
     grid-area: index-footer;
 }
 
-header {
-    font: 5em sans-serif;
+
+/*Styling for the edit page.*/
+.edit-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "edit-header"
+        "edit-content";
+    grid-row-gap: 15px;
+}
+
+.edit-header {
+    grid-area: edit-header;
+}
+
+.edit-title {
+    font: Helvetica;
+    font-weight: bold;
+    font-size: 5em;
+}
+
+.edit-content {
+    grid-area: edit-content;
+}
+
+.edit-content-description {
+    font: Helvetica;
+    font-weight: 600;
+    font-size: 2em;
 }
