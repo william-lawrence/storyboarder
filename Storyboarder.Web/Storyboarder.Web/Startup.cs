@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Storyboarder.Web.DAL;
 
 namespace Storyboarder.Web
 {
@@ -31,6 +32,10 @@ namespace Storyboarder.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            string connectionString = Configuration["ConnectionStrings:default"];
+
+            //Dependency injection configuration
+            services.AddTransient<IBoardDAL>(d => new BoardSqlDAL(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

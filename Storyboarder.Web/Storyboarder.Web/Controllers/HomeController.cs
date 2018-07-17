@@ -4,15 +4,26 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Storyboarder.Web.DAL;
 using Storyboarder.Web.Models;
 
 namespace Storyboarder.Web.Controllers
 {
     public class HomeController : Controller
     {
+        
+        // Dependency injection configuration
+        private readonly IBoardDAL dal;
+        public HomeController(IBoardDAL dal)
+        {
+            this.dal = dal;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var boards = dal.GetAllBoards();
+
+            return View(boards);
         }
 
         public IActionResult About()
