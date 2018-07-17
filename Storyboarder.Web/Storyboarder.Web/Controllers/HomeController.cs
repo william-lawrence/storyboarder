@@ -36,10 +36,12 @@ namespace Storyboarder.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult EditBoard(Board board)
         {
+            dal.UpdateBoard(board);
 
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult About()
