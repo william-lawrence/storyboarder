@@ -133,13 +133,14 @@ namespace Storyboarder.Web.DAL
         /// <returns>A board object whose properties match the row used to generate it.</returns>
         private Board MapRowToBoard(SqlDataReader reader)
         {
-            Board board = new Board();
-
-            board.Id = Convert.ToInt32(reader["id"]);
-            board.Title = Convert.ToString(reader["title"]);
-            board.FirstName = Convert.ToString(reader["author_first"]);
-            board.LastName = Convert.ToString(reader["author_last"]);
-            board.Description = Convert.ToString(reader["description"]);
+            Board board = new Board
+            {
+                Id = Convert.ToInt32(reader["id"]),
+                Title = Convert.ToString(reader["title"]),
+                FirstName = Convert.ToString(reader["author_first"]),
+                LastName = Convert.ToString(reader["author_last"]),
+                Description = Convert.ToString(reader["description"])
+            };
 
             return board;
         }
