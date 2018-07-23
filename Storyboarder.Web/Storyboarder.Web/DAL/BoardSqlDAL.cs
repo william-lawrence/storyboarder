@@ -41,7 +41,7 @@ namespace Storyboarder.Web.DAL
                     connection.Open();
 
                     // The SQL command to get all boards from the database
-                    string sql = "SELECT * FROM board;";
+                    string sql = "SELECT * FROM boards;";
 
                     SqlCommand command = new SqlCommand(sql, connection);
 
@@ -77,7 +77,7 @@ namespace Storyboarder.Web.DAL
                     connection.Open();
 
                     // The SQL command to get all boards from the database
-                    string sql = "SELECT * FROM board WHERE board.id = @boardId;";
+                    string sql = "SELECT * FROM boards WHERE boards.id = @boardId;";
 
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@boardId", boardId);
@@ -102,6 +102,10 @@ namespace Storyboarder.Web.DAL
             return board;
         }
 
+        /// <summary>
+        /// Updates a given board in the database
+        /// </summary>
+        /// <param name="board">The board to be updated</param>
         public void UpdateBoard(Board board)
         {
             try
@@ -111,11 +115,39 @@ namespace Storyboarder.Web.DAL
                     connection.Open();
 
                     // SQL to change the description in the database
-                    string sql = "UPDATE board SET description = @boardDescription WHERE id = @boardId;";
+                    string sql = "UPDATE boards SET description = @boardDescription WHERE id = @boardId;";
 
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@boardDescription", board.Description);
                     command.Parameters.AddWithValue("@boardId", board.Id);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Deletes a given board.
+        /// </summary>
+        /// <param name="board">The board to be deleted.</param>
+        public void DeleteBoard(int boardId)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    // SQL to delete a given board.
+                    // @id is the id of the board passed through the method.
+                    string sql = "DELETE FROM boards WHERE boards.id = @id;";
+
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@id", boardId);
 
                     command.ExecuteNonQuery();
                 }
