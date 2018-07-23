@@ -66,15 +66,20 @@ textarea {
     width: 100%;
 }
 
-/*Styling for the index page.*/
+footer {
+    grid-area: footer;
+    font: Helvetica;
+}
 
+
+/*Styling for the index page.*/
 .index-wrapper {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 
         "index-header"
         "index-content-wrapper"
-        "index-footer";
+        "footer";
     grid-row-gap: 15px;
 }
 
@@ -101,10 +106,6 @@ textarea {
 
 .index-content {
     grid-area: index-content
-}
-
-.index-footer {
-    grid-area: index-footer;
 }
 
 
