@@ -14,6 +14,23 @@ function getElementFromTemplate(id) {
 
 // wait till the DOM is loaded to add JS content.
 document.addEventListener('DOMContentLoaded', () => {
-
+    getAllBoards();
 });
 
+let boards = [];
+let base = 'http://localhost:61815';
+
+
+
+function getAllBoards() {
+    const url = `${base}/api/boards`;
+    const settings = {
+        method: 'GET'
+    };
+
+    fetch(url, settings)
+        .then(response => response.json())
+        .then(json => {
+            console.log(json);
+        });
+}
