@@ -15,10 +15,9 @@ function getElementFromTemplate(id) {
 // wait till the DOM is loaded to add JS content.
 document.addEventListener('DOMContentLoaded', () => {
     getAllBoards();
-    addBoardsToPage(boards)
 });
 
-let boards = [];
+let boards;
 let base = 'http://localhost:61815';
 
 
@@ -36,6 +35,7 @@ function getAllBoards() {
         .then(json => {
             console.log(json);
             boards = json;
+            addBoardsToPage(boards)
         });
 }
 
@@ -45,11 +45,18 @@ function getAllBoards() {
  */
 function addBoardsToPage(boards) {
     console.log('Adding Stories to page...');
-
     // Create a copy of the story template
     const storyTemplate = getElementFromTemplate('story-template');
 
-    NodeList.forEach(boards)
+    for (let i = 0; i < boards.length; i++) {
+        let board = boards[i];
+        storyTemplate.querySelector('h3.index-content-title').innerText = board.description;
+        document.querySelector('div.index-content-wrapper').insertAdjacentElement('afterbegin', storyTemplate);
+
+    }
+
+
+    
         
 
 }
