@@ -51,12 +51,6 @@ function addBoardsToPage(boards) {
     for (let i = 0; i < boards.length; i++) {
         let board = boards[i];
         storyTemplate.querySelector('h3.index-content-title').innerText = board.description;
-        document.querySelector('div.index-content-wrapper').insertAdjacentElement('afterbegin', storyTemplate);
-
+        document.querySelector('div.index-content-wrapper').insertAdjacentElement('beforeend', storyTemplate);
     }
-
-
-    
-        
-
 }
