@@ -14,42 +14,27 @@
 
 <body>
 
-    <h1>Jeopardy Trainer</h1>
-
-    <div id="buttons">
-        <button id="start" class="btn btn-primary">START</button>
+    <div class="index-wrapper">
+        <header class="index-header index-title card">Storyboarder</header>
+        <div class="index-content-wrapper">
     </div>
 
-    <!--this is NOT the id of the question. Instead, it is the number of questions attempted
-        resetting the score sets this number to 0.-->
-    <h2 id="score" class="hidden">Score: <span id="score">0</span></h2>
-    <button id="reset" class="btn btn-danger hidden">RESET SCORE</button>
-    <br></br>
+    <!--This is where the cards will go-->
+    <div class="index-content card">
 
-    <!--this is the area of the page where the question card will be displayed-->
-    <div id="question">
-        
     </div>
 
-
-    <template id="question-template">
-        <div>
-            <div class="question card">
-                <!--this is where the question will go-->
-                <p class="question-text"></p>
-                <p class="difficulty"></p>
-                <p class="category"></p>
-                <button class="btn btn-primary" id="show-answer">SHOW ANSWER</button>
+        <!--Template for each of the cards-->
+        <template id="question-template">
+            <div class="index-content card">
+                <h3 class="index-content-title"></h3>
+                <p class="index-content-description"></p>
+                <button class="btn btn-primary"></button>
+                <button class="btn btn-secondary"></button>
             </div>
-            <div class="answer card hidden">
-                <p class="answer-text"></p>
-                <button class="btn btn-success" id="correct">CORRECT</button>
-                <button class="btn btn-secondary" id="incorrect">INCORRECT</button>
-            </div>            
-        </div>
-    </template>
+        </template>
 
-    <script src="script.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
