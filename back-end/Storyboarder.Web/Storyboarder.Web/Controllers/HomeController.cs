@@ -43,6 +43,14 @@ namespace Storyboarder.Web.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteBoard(int id)
+        {
+            dal.DeleteBoard(id);
+
+            return RedirectToAction("Index", "Home");
+        }
 
         public IActionResult About()
         {
