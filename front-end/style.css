@@ -1,0 +1,100 @@
+
+/*A little padding just to keep things clean*/
+body {
+    padding-top: 50px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin: 10px 10px 10px 10px;
+}
+
+/*Heading CSS*/
+
+h1 {    
+    font-family: Helvetica;
+    font-size: 5em;
+    font-weight: bold;
+}
+
+h2 {
+    font: Helvetica;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+p {
+    font: Helvetica;
+}
+
+
+/*this is the class that is used to create the question card.*/
+.card {
+    width: calc(100% - 30px);
+    padding-top: 10px;
+    padding-right: 12px;
+    padding-bottom: 10px;
+    padding-left: 12px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background: white;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: white;
+    display: block;
+    color: #0a0a0a;
+    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border: 1px solid #d6d6d6;
+    border-top-color: rgb(214, 214, 214);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgb(214, 214, 214);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgb(214, 214, 214);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(214, 214, 214);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    box-shadow: 3px 3px 0px #bababa;
+}
+
+/*hidden class used to hide answers (and other secrets)*/
+.hidden {
+    display: none;
+}
+
+.question-text {
+    font: Helvetica;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.difficulty {
+    font: Helvetica;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.category {
+    font: Helvetica;
+    font-size: 1em;
+    font-weight: 300;   
+}
