@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Storyboarder</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="index-wrapper">
+        <header class="index-header index-title card">Storyboarder</header>
+        <div class="index-content-wrapper">
+        <!--this is the area where the story cards will live.-->
+        
+        </div>
+    </div>
+
+
+        <!--Template for each of the story cards-->
+        <template id="story-template">
+            <div class="index-content card">
+                <h3 class="index-content-title"></h3>
+                <p class="index-content-description"></p>
+                <button class="btn btn-primary">View</button>
+                <button class="btn btn-secondary">Edit</button>
+            </div>
+        </template>
+
+        <script src="script.js"></script>
+</body>
+
+</html>

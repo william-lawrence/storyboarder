@@ -32,6 +32,15 @@ namespace Storyboarder.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // Enable Cors To Allow Any Requestor to use our Api
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin() // allows any requester
+                    .AllowAnyMethod()                   // supports all http methods
+                    .AllowAnyHeader());                 // supports all http request headers
+            });
+
             string connectionString = Configuration["ConnectionStrings:default"];
 
             //Dependency injection configuration
@@ -53,6 +62,7 @@ namespace Storyboarder.Web
                 app.UseHsts();
             }
 
+            app.UseCors("CorsPolicy"); // Tells the application to use our cors policy.
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

@@ -1,0 +1,140 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin: 10px 10px 10px 10px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.card {
+    width: calc(100% - 30px);
+    padding-top: 10px;
+    padding-right: 12px;
+    padding-bottom: 10px;
+    padding-left: 12px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background: white;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: white;
+    display: block;
+    color: #0a0a0a;
+    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border: 1px solid #d6d6d6;
+    border-top-color: rgb(214, 214, 214);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgb(214, 214, 214);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgb(214, 214, 214);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(214, 214, 214);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    box-shadow: 3px 3px 0px #bababa;
+}
+
+textarea {
+    height: 10em;
+    width: 100%;
+}
+
+footer {
+    grid-area: footer;
+    font: Helvetica;
+}
+
+
+/*Styling for the index page.*/
+.index-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "index-header"
+        "index-content-wrapper"
+        "footer";
+    grid-row-gap: 15px;
+}
+
+.index-header {
+    grid-area: index-header;
+}
+
+.index-title {
+    font: Helvetica;
+    font-weight: bold;
+    font-size: 5em;
+}
+
+.index-content-title {
+    font: Helvetica;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+.index-content-description {
+    font: garamond;
+    font-size: 1.2em;
+}
+
+.index-content {
+    grid-area: index-content
+}
+
+
+/*Styling for the edit page.*/
+.edit-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "edit-header"
+        "edit-content";
+    grid-row-gap: 15px;
+}
+
+.edit-header {
+    grid-area: edit-header;
+}
+
+.edit-title {
+    font: Helvetica;
+    font-weight: bold;
+    font-size: 5em;
+}
+
+.edit-content {
+    grid-area: edit-content;
+}
+
+.edit-content-description {
+    font: Helvetica;
+    font-weight: 600;
+    font-size: 2em;
+}
