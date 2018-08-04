@@ -15,13 +15,16 @@ function getElementFromTemplate(id) {
 // wait till the DOM is loaded to add JS content.
 document.addEventListener('DOMContentLoaded', () => {
     getAllBoards();
+    addBoardsToPage(boards)
 });
 
 let boards = [];
 let base = 'http://localhost:61815';
 
 
-
+/**
+ * Calls the API and Gets all the boards for the user.
+ */
 function getAllBoards() {
     const url = `${base}/api/boards`;
     const settings = {
@@ -32,5 +35,21 @@ function getAllBoards() {
         .then(response => response.json())
         .then(json => {
             console.log(json);
+            boards = json;
         });
+}
+
+/**
+ * Adds all story cards to the page
+ * @param {object} boards All the boards that were pulled from the API
+ */
+function addBoardsToPage(boards) {
+    console.log('Adding Stories to page...');
+
+    // Create a copy of the story template
+    const storyTemplate = getElementFromTemplate('story-template');
+
+    NodeList.forEach(boards)
+        
+
 }
