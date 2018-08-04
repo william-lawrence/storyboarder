@@ -44,13 +44,16 @@ function getAllBoards() {
  * @param {object} boards All the boards that were pulled from the API
  */
 function addBoardsToPage(boards) {
-    console.log('Adding Stories to page...');
-    // Create a copy of the story template
-    const storyTemplate = getElementFromTemplate('story-template');
+    console.log('Adding Stories to page.');
+   
+    
 
     for (let i = 0; i < boards.length; i++) {
+        // Create a copy of the story template
+        const storyTemplate = getElementFromTemplate('story-template');
         let board = boards[i];
-        storyTemplate.querySelector('h3.index-content-title').innerText = board.description;
+        storyTemplate.querySelector('h3.index-content-title').innerText = board.title;
+        storyTemplate.querySelector('p.index-content-description').innerText = board.description;
         document.querySelector('div.index-content-wrapper').insertAdjacentElement('beforeend', storyTemplate);
     }
 }
