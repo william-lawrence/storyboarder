@@ -1,33 +1,18 @@
-
-/*A little padding just to keep things clean*/
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
 body {
     padding-top: 50px;
-    padding-right: 20px;
     padding-bottom: 20px;
-    padding-left: 20px;
-    margin: 10px 10px 10px 10px;
+    margin-top: 10px;
 }
 
-/*Heading CSS*/
-
-h1 {    
-    font-family: Helvetica;
-    font-size: 5em;
-    font-weight: bold;
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-h2 {
-    font: Helvetica;
-    font-size: 3em;
-    font-weight: bold;
-}
-
-p {
-    font: Helvetica;
-}
-
-
-/*this is the class that is used to create the question card.*/
 .card {
     width: calc(100% - 30px);
     padding-top: 10px;
@@ -76,25 +61,80 @@ p {
     box-shadow: 3px 3px 0px #bababa;
 }
 
-/*hidden class used to hide answers (and other secrets)*/
-.hidden {
-    display: none;
+textarea {
+    height: 10em;
+    width: 100%;
 }
 
-.question-text {
+footer {
+    grid-area: footer;
     font: Helvetica;
-    font-weight: 500;
+}
+
+
+/*Styling for the index page.*/
+.index-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "index-header"
+        "index-content-wrapper"
+        "footer";
+    grid-row-gap: 15px;
+}
+
+.index-header {
+    grid-area: index-header;
+}
+
+.index-title {
+    font: Helvetica;
+    font-weight: bold;
+    font-size: 5em;
+}
+
+.index-content-title {
+    font: Helvetica;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+.index-content-description {
+    font: garamond;
     font-size: 1.2em;
 }
 
-.difficulty {
-    font: Helvetica;
-    font-size: 1em;
-    font-weight: 300;
+.index-content {
+    grid-area: index-content
 }
 
-.category {
+
+/*Styling for the edit page.*/
+.edit-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "edit-header"
+        "edit-content";
+    grid-row-gap: 15px;
+}
+
+.edit-header {
+    grid-area: edit-header;
+}
+
+.edit-title {
     font: Helvetica;
-    font-size: 1em;
-    font-weight: 300;   
+    font-weight: bold;
+    font-size: 5em;
+}
+
+.edit-content {
+    grid-area: edit-content;
+}
+
+.edit-content-description {
+    font: Helvetica;
+    font-weight: 600;
+    font-size: 2em;
 }
