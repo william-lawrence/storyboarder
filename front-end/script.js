@@ -46,14 +46,13 @@ function getAllBoards() {
 function addBoardsToPage(boards) {
     console.log('Adding Stories to page.');
    
-    
-
     for (let i = 0; i < boards.length; i++) {
         // Create a copy of the story template
         const storyTemplate = getElementFromTemplate('story-template');
         let board = boards[i];
         storyTemplate.querySelector('h3.index-content-title').innerText = board.title;
         storyTemplate.querySelector('p.index-content-description').innerText = board.description;
+        storyTemplate.querySelector('span.board-id').innerText = board.id;
         document.querySelector('div.index-content-wrapper').insertAdjacentElement('beforeend', storyTemplate);
     }
 }
