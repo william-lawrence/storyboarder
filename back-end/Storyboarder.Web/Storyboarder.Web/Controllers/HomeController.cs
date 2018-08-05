@@ -41,7 +41,8 @@ namespace Storyboarder.Web.Controllers
         {
             dal.UpdateBoard(board);
 
-            return RedirectToAction("Index", "Home");
+            return NoContent();
+            //return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
