@@ -11,14 +11,19 @@ namespace Storyboarder.Web.Controllers
 {
     public class HomeController : Controller
     {
-        
+        #region Dependency Injection
         // Dependency injection configuration
         private readonly IBoardDAL dal;
         public HomeController(IBoardDAL dal)
         {
             this.dal = dal;
         }
+        #endregion
 
+        /// <summary>
+        /// Action that generates the homepage
+        /// </summary>
+        /// <returns>View with all the boards the user has created.</returns>
         [HttpGet]
         public IActionResult Index()
         {
@@ -27,6 +32,11 @@ namespace Storyboarder.Web.Controllers
             return View(boards);
         }
 
+        /// <summary>
+        /// Action that generate a page for the board when a user selects it.
+        /// </summary>
+        /// <param name="id">the id of the board in the database</param>
+        /// <returns>View with the board that the user selected.</returns>
         [HttpGet]
         public IActionResult EditBoard(int id)
         {
@@ -35,6 +45,11 @@ namespace Storyboarder.Web.Controllers
             return View(board);
         }
 
+        /// <summary>
+        /// Updates the board with the changes that the user made.
+        /// </summary>
+        /// <param name="board">The updated board</param>
+        /// <returns>Doens't return anything, but updates the database.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EditBoard(Board board)
@@ -42,8 +57,13 @@ namespace Storyboarder.Web.Controllers
             dal.UpdateBoard(board);
 
             return NoContent();
-            //return RedirectToAction("Index", "Home");
         }
+
+        /// <summary>
+        /// Deletes the board that the user selected.
+        /// </summary>
+        /// <param name="id">The id in the database for the board to be deleted.</param>
+        /// <returns>View of homepage.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteBoard(int id)
