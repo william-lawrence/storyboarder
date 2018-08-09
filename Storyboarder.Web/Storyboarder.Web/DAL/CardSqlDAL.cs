@@ -63,8 +63,6 @@ namespace Storyboarder.Web.DAL
             return cards;
         }
 
-
-
         /// <summary>
         /// Gets a card given its ID
         /// </summary>
@@ -93,6 +91,11 @@ namespace Storyboarder.Web.DAL
 
         }
 
+        /// <summary>
+        /// Maps the rows of the cards table to a card object.
+        /// </summary>
+        /// <param name="reader">>The data reader that is being used to get the data from the database.</param>
+        /// <returns>A card object whose properties match the row used to generate it.</returns>
         private Card MapRowToCard(SqlDataReader reader)
         {
             Card card = new Card
