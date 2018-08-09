@@ -8,14 +8,14 @@
         <header class="edit-header edit-title card">@Model.Title</header>
         <div class="edit-content card">
 
-            <form asp-controller="Home" asp-action="EditBoard" asp-route-id="@Model.Id" method="post">
+            <form asp-controller="EditBoard" asp-action="EditBoard" asp-route-id="@Model.Id" method="post">
                 <label class="edit-content-description">Description</label>
                 <br />
-                <textarea asp-for="Description" ></textarea>
+                <textarea asp-for="Description"></textarea>
                 <input class="btn btn-success" type="submit" value="Save" />
             </form>
 
-            <form asp-controller="Home" asp-action="DeleteBoard" asp-route-id="@Model.Id" method="post">
+            <form asp-controller="EditBoard" asp-action="DeleteBoard" asp-route-id="@Model.Id" method="post">
                 <input class="btn btn-danger" type="submit" value="Delete" />
             </form>
 
