@@ -1,6 +1,7 @@
 ﻿using Storyboarder.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,42 +28,83 @@ namespace Storyboarder.Web.DAL
         }
 
         /// <summary>
-        /// Gets all the boards from the database.
+        /// Gets all the cards for a given board from the database 
         /// </summary>
-        /// <returns>A list of all the boards in the database as a board object.</returns>
-        IList<Board> GetAllBoards()
+        /// <returns></returns>
+        IList<Card> GetAllCards()
         {
-            return NotImplementedException;
+            IList<Card> cards = new List<Card>();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    // The SQL command to get all the cards from the database
+                    string sql = "SELECT * FROM cards;";
+
+                    SqlCommand command = new SqlCommand(sql, connection);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        cards.Add(MapRowToCard(reader));
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return cards;
+        }
+
+
+
+        /// <summary>
+        /// Gets a card given its ID
+        /// </summary>
+        /// <param name="cardId">The id number of the card in the database.</param>
+        /// <returns>The card with the given id as a card object.</returns>
+        Card GetCard(int cardId)
+        {
+
         }
 
         /// <summary>
-        /// Gets a board given its ID.
+        /// Updates the card with new information
         /// </summary>
-        /// <param name="boardId">The id number of the board in the database</param>
-        /// <returns>The board with the given id as a a board object.</returns>
-        Board GetBoard(int boardId)
+        /// <param name="card">The card object with the updated properties.</param>
+        void UpdateCard(Card card)
         {
-            return NotImplementedException;
+
         }
 
         /// <summary>
-        /// Updates the board with new information.
+        /// Deletes a card from the database
         /// </summary>
-        /// <param name="board">The board object with updated properties.</param>
-        void UpdateBoard(Board board)
+        /// <param name="cardId">The id of the card to be deleted.</param>
+        void DeleteCard(int cardId)
         {
-            return NotImplementedException;
+
         }
 
-        /// <summary>
-        /// Deletes a particular row from the database corresponding to a board.
-        /// </summary>
-        /// <param name="board">The id of the board to be deleted.</param>
-        void DeleteBoard(int boardId)
+        private Card MapRowToCard(SqlDataReader reader)
         {
-            return NotImplementedException;
+            Card card = new Card
+            {
+                Id = Convert.ToInt32(reader["id"]),
+                BoardId = Convert.ToInt32(reader["board_id"]),
+                Number = Convert.ToInt32(reader["number"]),
+                Title = Convert.ToString(reader["title"]),
+                Description = Convert.ToString(reader["description"])
+            };
+
+            return card;
         }
-
-
     }
 }
