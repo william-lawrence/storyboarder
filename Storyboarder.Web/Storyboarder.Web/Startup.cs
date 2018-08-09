@@ -32,19 +32,12 @@ namespace Storyboarder.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            // Enable Cors To Allow Any Requestor to use our Api
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin() // allows any requester
-                    .AllowAnyMethod()                   // supports all http methods
-                    .AllowAnyHeader());                 // supports all http request headers
-            });
-
+            // Connection string to use for database connection
             string connectionString = Configuration["ConnectionStrings:default"];
 
             //Dependency injection configuration
             services.AddTransient<IBoardDAL>(d => new BoardSqlDAL(connectionString));
+            services.AddTransient<ICardSqlDAL>(d => new CardSqlDAL(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -62,7 +55,6 @@ namespace Storyboarder.Web
                 app.UseHsts();
             }
 
-            app.UseCors("CorsPolicy"); // Tells the application to use our cors policy.
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
