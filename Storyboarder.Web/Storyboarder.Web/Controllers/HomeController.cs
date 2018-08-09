@@ -32,46 +32,7 @@ namespace Storyboarder.Web.Controllers
             return View(boards);
         }
 
-        /// <summary>
-        /// Action that generate a page for the board when a user selects it.
-        /// </summary>
-        /// <param name="id">the id of the board in the database</param>
-        /// <returns>View with the board that the user selected.</returns>
-        [HttpGet]
-        public IActionResult EditBoard(int id)
-        {
-            var board = dal.GetBoard(id);
-
-            return View(board);
-        }
-
-        /// <summary>
-        /// Updates the board with the changes that the user made.
-        /// </summary>
-        /// <param name="board">The updated board</param>
-        /// <returns>Doens't return anything, but updates the database.</returns>
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult EditBoard(Board board)
-        {
-            dal.UpdateBoard(board);
-
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Deletes the board that the user selected.
-        /// </summary>
-        /// <param name="id">The id in the database for the board to be deleted.</param>
-        /// <returns>View of homepage.</returns>
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteBoard(int id)
-        {
-            dal.DeleteBoard(id);
-
-            return RedirectToAction("Index", "Home");
-        }
+        #region Microsoft Crap
 
         public IActionResult About()
         {
@@ -97,5 +58,7 @@ namespace Storyboarder.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        #endregion
     }
 }
