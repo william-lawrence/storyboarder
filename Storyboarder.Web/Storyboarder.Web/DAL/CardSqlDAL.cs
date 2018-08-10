@@ -31,7 +31,7 @@ namespace Storyboarder.Web.DAL
         /// Gets all the cards for a given board from the database 
         /// </summary>
         /// <returns></returns>
-        IList<Card> GetAllCards()
+        public IList<Card> GetAllCards()
         {
             IList<Card> cards = new List<Card>();
 
@@ -52,7 +52,6 @@ namespace Storyboarder.Web.DAL
                     {
                         cards.Add(MapRowToCard(reader));
                     }
-
                 }
             }
             catch (SqlException ex)
@@ -68,16 +67,51 @@ namespace Storyboarder.Web.DAL
         /// </summary>
         /// <param name="cardId">The id number of the card in the database.</param>
         /// <returns>The card with the given id as a card object.</returns>
-        Card GetCard(int cardId)
+        public Card GetCard(int cardId)
         {
+            Card card = new Card();
 
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    // The SQL command to get the  specific board from the datadase by
+                    // using its ID. 
+                    string sql = "SELECT * FROM cards WHERE cards.id = @CardId;";
+
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@CardId", cardId);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        card.Id = Convert.ToInt32(reader["id"]);
+                        card.BoardId = Convert.ToInt32(reader["board_id"]);
+                        card.Number = Convert.ToInt32(reader["number"]);
+                        card.Title = Convert.ToString(reader["title"]);
+                        card.Description = Convert.ToString(reader["description"]);
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+
+
+            return card;
         }
 
         /// <summary>
         /// Updates the card with new information
         /// </summary>
         /// <param name="card">The card object with the updated properties.</param>
-        void UpdateCard(Card card)
+        public void UpdateCard(Card card)
         {
 
         }
@@ -86,7 +120,7 @@ namespace Storyboarder.Web.DAL
         /// Deletes a card from the database
         /// </summary>
         /// <param name="cardId">The id of the card to be deleted.</param>
-        void DeleteCard(int cardId)
+        public void DeleteCard(int cardId)
         {
 
         }

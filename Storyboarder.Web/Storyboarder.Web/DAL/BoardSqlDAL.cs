@@ -76,7 +76,8 @@ namespace Storyboarder.Web.DAL
                 {
                     connection.Open();
 
-                    // The SQL command to get all boards from the database
+                    // The SQL command to get the specific board from the database
+                    // by using its ID.
                     string sql = "SELECT * FROM boards WHERE boards.id = @boardId;";
 
                     SqlCommand command = new SqlCommand(sql, connection);
