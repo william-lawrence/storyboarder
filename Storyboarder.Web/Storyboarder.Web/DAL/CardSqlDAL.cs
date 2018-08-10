@@ -77,7 +77,7 @@ namespace Storyboarder.Web.DAL
                 {
                     connection.Open();
 
-                    // The SQL command to get the  specific board from the datadase by
+                    // The SQL command to get the  specific board from the database by
                     // using its ID. 
                     string sql = "SELECT * FROM cards WHERE cards.id = @CardId;";
 
@@ -86,6 +86,7 @@ namespace Storyboarder.Web.DAL
 
                     SqlDataReader reader = command.ExecuteReader();
 
+                    // Add the information from the database to the card.
                     while (reader.Read())
                     {
                         card.Id = Convert.ToInt32(reader["id"]);
@@ -102,8 +103,6 @@ namespace Storyboarder.Web.DAL
                 throw ex;
             }
 
-
-
             return card;
         }
 
@@ -113,7 +112,26 @@ namespace Storyboarder.Web.DAL
         /// <param name="card">The card object with the updated properties.</param>
         public void UpdateCard(Card card)
         {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
 
+                    // SQL to change the description in the database
+                    string sql = "UPDATE cards SET description = @cardDescription WHERE id = @cardId;";
+
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@cardDescription", card.Description);
+                    command.Parameters.AddWithValue("@cardId", card.Id);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -122,7 +140,26 @@ namespace Storyboarder.Web.DAL
         /// <param name="cardId">The id of the card to be deleted.</param>
         public void DeleteCard(int cardId)
         {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
 
+                    // SQL to delete a given card.
+                    // @id is the id of the card int the database
+                    string sql = "DELETE FROM cards WHERE cards.id = @id;";
+
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@id", cardId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
