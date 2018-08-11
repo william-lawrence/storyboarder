@@ -32,12 +32,22 @@ namespace Storyboarder.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                // Sets session expiration to 20 minuates
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.Cookie.HttpOnly = true;
+            });
+
             // Connection string to use for database connection
+            // This can be changed in the config file
             string connectionString = Configuration["ConnectionStrings:default"];
 
-            //Dependency injection configuration
+            //Dependency injection configuration 
             services.AddTransient<IBoardDAL>(d => new BoardSqlDAL(connectionString));
             services.AddTransient<ICardSqlDAL>(d => new CardSqlDAL(connectionString));
+            services.AddTransient<IUserDAL>(d => new UserSqlDAL(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -58,6 +68,7 @@ namespace Storyboarder.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

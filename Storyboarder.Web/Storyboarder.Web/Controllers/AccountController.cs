@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication.Web.Models.Account;
-using WebApplication.Web.Providers.Auth;
+using Storyboarder.Web.Models.Account;
+using Storyboarder.Web.Providers.Auth;
 
-namespace WebApplication.Web.Controllers
+namespace Storyboarder.Web.Controllers
 {
     public class AccountController : Controller
     {

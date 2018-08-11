@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication.Web.DAL;
-using WebApplication.Web.Models;
+using Storyboarder.Web.DAL;
+using Storyboarder.Web.Models;
 
-namespace WebApplication.Web.Providers.Auth
+namespace Storyboarder.Web.Providers.Auth
 {
     /// <summary>
     /// An implementation of the IAuthProvider that saves data within session.

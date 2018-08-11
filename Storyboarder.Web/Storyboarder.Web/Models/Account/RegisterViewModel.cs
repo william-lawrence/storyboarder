@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication.Web.Models.Account
+namespace Storyboarder.Web.Models.Account
 {
     public class RegisterViewModel
     {

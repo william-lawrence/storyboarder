@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication.Web.Models
+namespace Storyboarder.Web.Models
 {
     public class User
     {

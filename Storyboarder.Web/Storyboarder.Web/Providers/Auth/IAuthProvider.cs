@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication.Web.Models;
+using Storyboarder.Web.Models;
 
-namespace WebApplication.Web.Providers.Auth
+namespace Storyboarder.Web.Providers.Auth
 {
     public interface IAuthProvider
     {
