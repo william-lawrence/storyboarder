@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication.Web.Providers.Auth
+namespace Storyboarder.Web.Providers.Auth
 {
     public class AuthorizationFilterAttribute : Attribute, IActionFilter
     {
