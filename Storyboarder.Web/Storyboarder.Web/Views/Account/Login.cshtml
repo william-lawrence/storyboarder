@@ -1,0 +1,21 @@
+﻿@model Storyboarder.Web.Models.Account.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<body>
+    <h2>Login</h2>
+
+    <form asp-controller="Account" asp-action="Login" method="post">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" />
+        <br />
+        <label asp-for="Password">Password</label>
+        <input asp-for="Password" />
+        <br />
+
+        <input type="submit" value="Login"/>
+    </form>
+</body>
+
+

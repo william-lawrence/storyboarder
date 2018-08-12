@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Storyboarder.Web.DAL;
+using Storyboarder.Web.Providers.Auth;
 
 namespace Storyboarder.Web
 {
@@ -28,7 +29,7 @@ namespace Storyboarder.Web
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -48,6 +49,11 @@ namespace Storyboarder.Web
             services.AddTransient<IBoardDAL>(d => new BoardSqlDAL(connectionString));
             services.AddTransient<ICardSqlDAL>(d => new CardSqlDAL(connectionString));
             services.AddTransient<IUserDAL>(d => new UserSqlDAL(connectionString));
+
+            // For Access to Session outside of a Controller
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            // To Map IAuthProvider to SessionAuthProvider
+            services.AddTransient<IAuthProvider, SessionAuthProvider>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
