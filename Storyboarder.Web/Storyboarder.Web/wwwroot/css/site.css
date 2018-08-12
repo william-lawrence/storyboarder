@@ -93,6 +93,12 @@ footer {
     font-size: 5em;
 }
 
+.index-menu {
+    font: Helvetica;
+    font-weight: bold;
+    font-size: 2em;
+}
+
 .index-content-title {
     font: Helvetica;
     font-weight: 600;

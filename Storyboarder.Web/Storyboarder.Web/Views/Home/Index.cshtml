@@ -3,11 +3,21 @@
     ViewData["Title"] = "Home Page";
 }
 
-
 <body>
     <div class="index-wrapper">
-        <header class="index-header index-title card">Storyboarder</header>
+        <header class="index-header card">
+            <h1 class="index-title">Storyboarder</h1>
+            <div class="index-menu">
+                <a asp-controller="Account" asp-action="Login">Login</a>
+                <a asp-controller="Account" asp-action="Register">Register</a>
+            </div>
+
+        </header>
         <div class="index-content-wrapper">
+
+
+
+
 
             @foreach (var board in Model)
             {
