@@ -52,7 +52,6 @@ namespace Storyboarder.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [AuthorizationFilter("admin")]
         [HttpGet]
         public IActionResult Register()
         {
