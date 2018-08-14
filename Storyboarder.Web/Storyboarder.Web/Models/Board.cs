@@ -18,16 +18,6 @@ namespace Storyboarder.Web.Models
         public string Title { get; set; }
 
         /// <summary>
-        /// The first name of the user that made the outline.
-        /// </summary>
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// The last name of th user that made the board.
-        /// </summary>
-        public string LastName { get; set; }
-
-        /// <summary>
         /// The description of the story in the board.
         /// </summary>        
         public string Description { get; set; }

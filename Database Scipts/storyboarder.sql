@@ -18,29 +18,6 @@ GO
 -- Create Tables
 BEGIN TRANSACTION
 
--- Create all the boards
-Create TABLE boards (
-    id              int             IDENTITY(1,1),
-	[user_id]		VARCHAR(256)	NOT NULL,
-    title           VARCHAR(256)    NOT NULL,
-    [description]   VARCHAR(512)    NOT NULL,
-
-    CONSTRAINT pk_boards PRIMARY KEY (id),
-	CONSTRAINT fk_boards_users FOREIGN KEY ([user_id]) REFERENCES users (id)
-);
-
--- Create all the story cards
-CREATE TABLE cards (
-    id              int             IDENTITY(1,1),
-    board_id        int             NOT NULL,
-    [number]        int             NOT NULL,
-    title           VARCHAR(256)    NOT NULL,
-    [description]   text            NOT NULL,
-
-    CONSTRAINT pk_cards PRIMARY KEY (id),
-    CONSTRAINT fk_cards_boards FOREIGN KEY (board_id) REFERENCES boards (id)
-);
-
 CREATE TABLE users
 (
 	id			int			identity(1,1),
@@ -52,13 +29,38 @@ CREATE TABLE users
 	CONSTRAINT pk_users PRIMARY KEY (id)
 );
 
+-- Create all the boards
+Create TABLE boards (
+    id              int             IDENTITY(1,1),
+	[user_id]		int				NOT NULL,
+    title           VARCHAR(256)    NOT NULL,
+    [description]   VARCHAR(512)    NOT NULL,
+
+    CONSTRAINT pk_boards PRIMARY KEY (id),
+	--CONSTRAINT fk_boards_users FOREIGN KEY ([user_id]) REFERENCES users (id)
+);
+
+-- Create all the story cards
+CREATE TABLE cards (
+    id              int             IDENTITY(1,1),
+    board_id        int             NOT NULL,
+    [number]        int             NOT NULL,
+    title           VARCHAR(256)    NOT NULL,
+    [description]   text            NOT NULL,
+
+    CONSTRAINT pk_cards PRIMARY KEY (id),
+   -- CONSTRAINT fk_cards_boards FOREIGN KEY (board_id) REFERENCES boards (id)
+);
+
+
+
 COMMIT TRANSACTION;
 
 -- Add initial boards data to the database.
 SET IDENTITY_INSERT boards ON;
-INSERT INTO boards(id, title, author_first, author_last, [description]) VALUES (1, 'Hamlet', 'William', 'Shakespeare','A boy is told by the ghost of his father to kill his uncle.');
-INSERT INTO boards (id, title, author_first, author_last, [description]) VALUES (2, 'Romeo and Juliet', 'William', 'Shakespeare','A love story, but like REALLY sad.');
-INSERT INTO boards (id, title, author_first, author_last, [description]) VALUES (3, 'King Lear', 'William', 'Shakespeare', 'Something about socialism.');
+INSERT INTO boards(id, [user_id], title, [description]) VALUES (1, 1,'Hamlet', 'A boy is told by the ghost of his father to kill his uncle.');
+INSERT INTO boards (id, [user_id], title, [description]) VALUES (2, 1,'Romeo and Juliet','A love story, but like REALLY sad.');
+INSERT INTO boards (id, [user_id], title, [description]) VALUES (3, 1, 'King Lear', 'Something about socialism.');
 SET IDENTITY_INSERT boards OFF;
 
 -- Add initial cards data to the database.
@@ -73,3 +75,7 @@ INSERT INTO cards(id, board_id, [number], title, [description]) VALUES (7, 3, 1,
 INSERT INTO cards(id, board_id, [number], title, [description]) VALUES (8, 3, 2, 'They gouge his eyes out', 'eww');
 INSERT INTO cards(id, board_id, [number], title, [description]) VALUES (9, 3, 3, 'Only when he is blind can he see', 'ironic.');
 SET IDENTITY_INSERT cards OFF;
+
+SET IDENTITY_INSERT users ON;
+INSERT INTO users(id, username, password, salt, role) VALUES (1, 'billyshakes', 'xgV7qpr1mh3JPEBFpxG2MUo3teA=', '10Ck0gS4oas=', 'role');
+SET IDENTITY_INSERT users OFF;

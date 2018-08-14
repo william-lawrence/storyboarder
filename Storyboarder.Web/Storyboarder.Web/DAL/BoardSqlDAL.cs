@@ -89,8 +89,6 @@ namespace Storyboarder.Web.DAL
                     {
                         board.Id = Convert.ToInt32(reader["id"]);
                         board.Title = Convert.ToString(reader["title"]);
-                        board.FirstName = Convert.ToString(reader["author_first"]);
-                        board.LastName = Convert.ToString(reader["author_last"]);
                         board.Description = Convert.ToString(reader["description"]);
                     }
                 }
@@ -170,8 +168,6 @@ namespace Storyboarder.Web.DAL
             {
                 Id = Convert.ToInt32(reader["id"]),
                 Title = Convert.ToString(reader["title"]),
-                FirstName = Convert.ToString(reader["author_first"]),
-                LastName = Convert.ToString(reader["author_last"]),
                 Description = Convert.ToString(reader["description"])
             };
 
