@@ -37,7 +37,7 @@ Create TABLE boards (
     [description]   VARCHAR(512)    NOT NULL,
 
     CONSTRAINT pk_boards PRIMARY KEY (id),
-	--CONSTRAINT fk_boards_users FOREIGN KEY ([user_id]) REFERENCES users (id)
+	CONSTRAINT fk_boards_users FOREIGN KEY ([user_id]) REFERENCES users (id)
 );
 
 -- Create all the story cards
@@ -49,12 +49,16 @@ CREATE TABLE cards (
     [description]   text            NOT NULL,
 
     CONSTRAINT pk_cards PRIMARY KEY (id),
-   -- CONSTRAINT fk_cards_boards FOREIGN KEY (board_id) REFERENCES boards (id)
+   CONSTRAINT fk_cards_boards FOREIGN KEY (board_id) REFERENCES boards (id)
 );
 
 
 
 COMMIT TRANSACTION;
+
+SET IDENTITY_INSERT users ON;
+INSERT INTO users(id, username, password, salt, role) VALUES (1, 'billyshakes', 'xgV7qpr1mh3JPEBFpxG2MUo3teA=', '10Ck0gS4oas=', 'role');
+SET IDENTITY_INSERT users OFF;
 
 -- Add initial boards data to the database.
 SET IDENTITY_INSERT boards ON;
@@ -76,6 +80,3 @@ INSERT INTO cards(id, board_id, [number], title, [description]) VALUES (8, 3, 2,
 INSERT INTO cards(id, board_id, [number], title, [description]) VALUES (9, 3, 3, 'Only when he is blind can he see', 'ironic.');
 SET IDENTITY_INSERT cards OFF;
 
-SET IDENTITY_INSERT users ON;
-INSERT INTO users(id, username, password, salt, role) VALUES (1, 'billyshakes', 'xgV7qpr1mh3JPEBFpxG2MUo3teA=', '10Ck0gS4oas=', 'role');
-SET IDENTITY_INSERT users OFF;
