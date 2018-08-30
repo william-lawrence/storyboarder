@@ -23,13 +23,11 @@ namespace Storyboarder.Web.Controllers
         /// <summary>
         /// Action that generates the homepage
         /// </summary>
-        /// <returns>View with all the boards the user has created.</returns>
+        /// <returns>Home Page where the user can login</returns>
         [HttpGet]
         public IActionResult Index()
         {
-            var boards = dal.GetAllBoards();
-
-            return View(boards);
+            return View();
         }
 
         /// <summary>

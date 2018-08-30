@@ -1,4 +1,4 @@
-﻿@model IList<Board>
+﻿
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -7,38 +7,12 @@
     <div class="index-wrapper">
         <header class="index-header card">
             <h1 class="index-title">Storyboarder</h1>
+        </header>
+        <div class="index-content-wrapper card">
             <div class="index-menu">
                 <a asp-controller="Account" asp-action="Login">Login</a>
                 <a asp-controller="Account" asp-action="Register">Register</a>
             </div>
-
-        </header>
-        <div class="index-content-wrapper">
-
-
-
-
-
-            @foreach (var board in Model)
-            {
-            <div class="index-content card">
-                <h3 class="index-content-title">@board.Title</h3>
-                <p class="index-content-description">@board.Description</p>
-
-                <form >
-                    <span>
-                        <input type="submit" value="View" />
-                    </span>
-                </form>
-
-                <form asp-controller="EditBoard" asp-action="EditBoard" asp-route-id="@board.Id" method="get">
-                    <span>
-                        <input type="submit" value="Edit" />
-                    </span>
-                </form>
-            </div>
-            }
-
         </div>
     </div>
 </body>
