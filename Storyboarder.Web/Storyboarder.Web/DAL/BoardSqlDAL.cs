@@ -30,7 +30,7 @@ namespace Storyboarder.Web.DAL
         /// Gets all the boards using the rows in the database.
         /// </summary>
         /// <returns>A list of the boards.</returns>
-        public IList<Board> GetAllBoards()
+        public IList<Board> GetAllBoardsForUser(int userId)
         {
             IList<Board> boards = new List<Board>();
 
@@ -41,9 +41,11 @@ namespace Storyboarder.Web.DAL
                     connection.Open();
 
                     // The SQL command to get all boards from the database
-                    string sql = "SELECT * FROM boards;";
+                    string sql = $@"SELECT * FROM boards
+                                    WHERE boards.user_id = @userId;";
 
                     SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@userId", userId);
 
                     SqlDataReader reader = command.ExecuteReader();
 

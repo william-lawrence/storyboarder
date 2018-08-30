@@ -12,7 +12,7 @@ namespace Storyboarder.Web.DAL
         /// Gets all the boards from the database.
         /// </summary>
         /// <returns>A list of all the boards in the database as a board object.</returns>
-        IList<Board> GetAllBoards();
+        IList<Board> GetAllBoardsForUser(int userId);
 
         /// <summary>
         /// Gets a board given its ID.
