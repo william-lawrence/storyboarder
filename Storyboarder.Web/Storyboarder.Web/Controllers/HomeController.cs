@@ -32,6 +32,11 @@ namespace Storyboarder.Web.Controllers
             return View(boards);
         }
 
+        /// <summary>
+        /// Takes the user to the page where they can see information about the application.
+        /// </summary>
+        /// <returns>View for the about page.</returns>
+        [HttpGet]
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -39,6 +44,10 @@ namespace Storyboarder.Web.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Takes the user to the page where they can reach out to me to report errors or other issues in the application
+        /// </summary>
+        /// <returns>View for the contact page</returns>
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
