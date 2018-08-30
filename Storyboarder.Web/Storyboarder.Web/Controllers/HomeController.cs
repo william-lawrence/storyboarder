@@ -11,25 +11,14 @@ namespace Storyboarder.Web.Controllers
 {
     public class HomeController : Controller
     {
-        #region Dependency Injection
-        // Dependency injection configuration
-        private readonly IBoardDAL dal;
-        public HomeController(IBoardDAL dal)
-        {
-            this.dal = dal;
-        }
-        #endregion
-
         /// <summary>
         /// Action that generates the homepage
         /// </summary>
-        /// <returns>View with all the boards the user has created.</returns>
+        /// <returns>Home Page where the user can login</returns>
         [HttpGet]
         public IActionResult Index()
         {
-            var boards = dal.GetAllBoards();
-
-            return View(boards);
+            return View();
         }
 
         /// <summary>
