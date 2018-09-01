@@ -34,7 +34,7 @@ namespace Storyboarder.Web.Controllers
                 if (validLogin)
                 {
                     // Redirect the user where you want them to go after successful login
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Boards", "Board");
                 }
             }
 
