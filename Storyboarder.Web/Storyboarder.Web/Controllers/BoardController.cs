@@ -26,11 +26,15 @@ namespace Storyboarder.Web.Controllers
         /// <returns>View with all the boards that are associted with a particular user.</returns>
         [HttpGet]
         [AuthorizationFilter]
-        public IActionResult Index()
+        public IActionResult Boards()
         {
             return View();
         }
 
+        /// <summary>
+        /// Gets all the boards for the user.
+        /// </summary>
+        /// <returns>All the boards for the user as JSON so that the boards.js can add them to the page.</returns>
         [HttpGet]
         [AuthorizationFilter]
         public JsonResult GetBoardsForUser()

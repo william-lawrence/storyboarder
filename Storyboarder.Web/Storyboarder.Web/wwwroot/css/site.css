@@ -99,18 +99,18 @@ footer {
     font-size: 2em;
 }
 
-.index-content-title {
+.board-content-title {
     font: Helvetica;
     font-weight: 600;
     font-size: 2em;
 }
 
-.index-content-description {
+.board-content-description {
     font: garamond;
     font-size: 1.2em;
 }
 
-.index-content {
+.board-content {
     grid-area: index-content
 }
 
