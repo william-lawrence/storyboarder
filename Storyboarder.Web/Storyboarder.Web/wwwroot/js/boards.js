@@ -46,6 +46,10 @@ function addBoardsToPage(boards) {
 
         newBoard.querySelector('h2.board-content-title').innerText = boards[i].title;
         newBoard.querySelector('p.board-content-description').innerText = boards[i].description;
+        newBoard.querySelector('button.view-scenes')
+
+        // This is the snippet that we need to add the function to the button.
+        // newLocationDiv.querySelector('a').setAttribute("href", `location/detail/${locationArray[i].id}?distanceFromUser=${locationArray[i].distanceFromUser}`);
 
         document.querySelector('div.user-boards').insertAdjacentElement('afterbegin', newBoard);
     }
