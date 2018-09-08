@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Storyboarder.Web.DAL
 {
-    public class CardSqlDAL : ICardSqlDAL
+    public class SceneSqlDAL : ISceneSqlDAL
     {
 
         // Due to the despondency injection, the ConnectionString property and the constructor are handled
@@ -22,7 +22,7 @@ namespace Storyboarder.Web.DAL
         /// Constructor that takes the connection string.
         /// </summary>
         /// <param name="connectionString">Connection string to get to the needed database.</param>
-        public CardSqlDAL(string connectionString)
+        public SceneSqlDAL(string connectionString)
         {
             this.ConnectionString = connectionString;
         }
@@ -31,9 +31,9 @@ namespace Storyboarder.Web.DAL
         /// Gets all the cards for a given board from the database 
         /// </summary>
         /// <returns></returns>
-        public IList<Card> GetAllCards()
+        public IList<Scene> GetAllScenes()
         {
-            IList<Card> cards = new List<Card>();
+            IList<Scene> cards = new List<Scene>();
 
             try
             {
@@ -65,11 +65,11 @@ namespace Storyboarder.Web.DAL
         /// <summary>
         /// Gets a card given its ID
         /// </summary>
-        /// <param name="cardId">The id number of the card in the database.</param>
+        /// <param name="sceneId">The id number of the card in the database.</param>
         /// <returns>The card with the given id as a card object.</returns>
-        public Card GetCard(int cardId)
+        public Scene GetScene(int sceneId)
         {
-            Card card = new Card();
+            Scene scene = new Scene();
 
             try
             {
@@ -79,21 +79,21 @@ namespace Storyboarder.Web.DAL
 
                     // The SQL command to get the  specific board from the database by
                     // using its ID. 
-                    string sql = "SELECT * FROM cards WHERE cards.id = @CardId;";
+                    string sql = "SELECT * FROM cards WHERE cards.id = @sceneId;";
 
                     SqlCommand command = new SqlCommand(sql, connection);
-                    command.Parameters.AddWithValue("@CardId", cardId);
+                    command.Parameters.AddWithValue("@sceneId", sceneId);
 
                     SqlDataReader reader = command.ExecuteReader();
 
                     // Add the information from the database to the card.
                     while (reader.Read())
                     {
-                        card.Id = Convert.ToInt32(reader["id"]);
-                        card.BoardId = Convert.ToInt32(reader["board_id"]);
-                        card.Number = Convert.ToInt32(reader["number"]);
-                        card.Title = Convert.ToString(reader["title"]);
-                        card.Description = Convert.ToString(reader["description"]);
+                        scene.Id = Convert.ToInt32(reader["id"]);
+                        scene.BoardId = Convert.ToInt32(reader["board_id"]);
+                        scene.Number = Convert.ToInt32(reader["number"]);
+                        scene.Title = Convert.ToString(reader["title"]);
+                        scene.Description = Convert.ToString(reader["description"]);
                     }
 
                 }
@@ -103,14 +103,14 @@ namespace Storyboarder.Web.DAL
                 throw ex;
             }
 
-            return card;
+            return scene;
         }
 
         /// <summary>
         /// Updates the card with new information
         /// </summary>
-        /// <param name="card">The card object with the updated properties.</param>
-        public void UpdateCard(Card card)
+        /// <param name="scene">The scene object with the updated properties.</param>
+        public void UpdateScene(Scene scene)
         {
             try
             {
@@ -119,11 +119,11 @@ namespace Storyboarder.Web.DAL
                     connection.Open();
 
                     // SQL to change the description in the database
-                    string sql = "UPDATE cards SET description = @cardDescription WHERE id = @cardId;";
+                    string sql = "UPDATE cards SET description = @sceneDescription WHERE id = @sceneId;";
 
                     SqlCommand command = new SqlCommand(sql, connection);
-                    command.Parameters.AddWithValue("@cardDescription", card.Description);
-                    command.Parameters.AddWithValue("@cardId", card.Id);
+                    command.Parameters.AddWithValue("@sceneDescription", scene.Description);
+                    command.Parameters.AddWithValue("@sceneId", scene.Id);
 
                     command.ExecuteNonQuery();
                 }
@@ -137,8 +137,8 @@ namespace Storyboarder.Web.DAL
         /// <summary>
         /// Deletes a card from the database
         /// </summary>
-        /// <param name="cardId">The id of the card to be deleted.</param>
-        public void DeleteCard(int cardId)
+        /// <param name="sceneId">The id of the card to be deleted.</param>
+        public void DeleteScene(int sceneId)
         {
             try
             {
@@ -151,7 +151,7 @@ namespace Storyboarder.Web.DAL
                     string sql = "DELETE FROM cards WHERE cards.id = @id;";
 
                     SqlCommand command = new SqlCommand(sql, connection);
-                    command.Parameters.AddWithValue("@id", cardId);
+                    command.Parameters.AddWithValue("@sceneTd", sceneId);
 
                     command.ExecuteNonQuery();
                 }
@@ -167,9 +167,9 @@ namespace Storyboarder.Web.DAL
         /// </summary>
         /// <param name="reader">>The data reader that is being used to get the data from the database.</param>
         /// <returns>A card object whose properties match the row used to generate it.</returns>
-        private Card MapRowToCard(SqlDataReader reader)
+        private Scene MapRowToCard(SqlDataReader reader)
         {
-            Card card = new Card
+            Scene scene = new Scene
             {
                 Id = Convert.ToInt32(reader["id"]),
                 BoardId = Convert.ToInt32(reader["board_id"]),
@@ -178,7 +178,7 @@ namespace Storyboarder.Web.DAL
                 Description = Convert.ToString(reader["description"])
             };
 
-            return card;
+            return scene;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Storyboarder.Web.Models
 {
-    public class Card
+    public class Scene
     {
         /// <summary>
         /// The id of the card in the database.

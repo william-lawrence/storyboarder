@@ -47,7 +47,7 @@ namespace Storyboarder.Web
 
             //Dependency injection configuration 
             services.AddTransient<IBoardDAL>(d => new BoardSqlDAL(connectionString));
-            services.AddTransient<ICardSqlDAL>(d => new CardSqlDAL(connectionString));
+            services.AddTransient<ISceneSqlDAL>(d => new CardSqlDAL(connectionString));
             services.AddTransient<IUserDAL>(d => new UserSqlDAL(connectionString));
 
             // For Access to Session outside of a Controller
